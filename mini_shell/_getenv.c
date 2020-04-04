@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-char *_getenv(char *name)
+char *_getenv(const char *name)
 {
 	extern char **environ;
 	char *comp = NULL;
@@ -16,5 +16,5 @@ char *_getenv(char *name)
 			return (strtok(NULL, "\n"));
 		}
 	}
-	return (0);
+	return (NULL);
 }
