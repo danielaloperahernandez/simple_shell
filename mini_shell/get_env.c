@@ -17,11 +17,3 @@ char *_getenv(char *name)
 	}
 	return (0);
 }
-int main()
-{
-	char s[] = "PATH";
-	char *res;
-	res = _getenv(s);
-	printf ("%s\n", res);
-	return (0);
-}

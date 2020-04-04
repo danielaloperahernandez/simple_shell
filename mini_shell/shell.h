@@ -12,3 +12,4 @@ char *_strcpy(char *dest, char *src);
 void execute_line(char **arg);
 char *read_line(void);
 char **split_line(char *line);
+char *_getenv(char *name);
