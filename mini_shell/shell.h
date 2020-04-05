@@ -35,3 +35,5 @@ char *_strcpy(char *dest, char *src);
 list_p *add_node_end(list_p **head, const char *str);
 size_t print_list(const list_p *h);
 char *str_concat(char *s1, char *s2);
+char *_strdup(char *str); 
+char **_realloc(char **ptr, size_t size);

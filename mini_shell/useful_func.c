@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * _strlen - return length of a string
  * @s: char type
@@ -47,7 +46,7 @@ list_p *add_node_end(list_p **head, const char *dir)
         if (new == NULL)
                 return (NULL);
         new->next = NULL;
-        new->dir = strdup(dir);
+        new->dir = _strdup((char *)dir);
         if (last)
         {
                 while (last->next)
@@ -113,4 +112,47 @@ char *str_concat(char *s1, char *s2)
 	}
 	cat[k] = '\0';
 	return (cat);
+}
+/**
+*_strdup - returns a pointer to a newly allocated space in memory
+*@str: string given as a parameter
+*Return:  pointer to the duplicated string or NULL
+*/
+
+char *_strdup(char *str)
+{
+	int i, j;
+	char *dup;
+
+	if (str == NULL)
+		return (NULL);
+	for (i = 0; str[i]; i++)
+		;
+	dup = (char *)malloc((i + 1) * sizeof(char));
+	if (dup == NULL)
+		return (dup);
+	for (j = 0; j <= i; ++j)
+		dup[j] = str[j];
+	return (dup);
+}
+/**
+*_realloc - reallocates a memory block using malloc and free
+*@ptr: pointer to the memory previously allocated
+*@old_size: size in bytes of the allocated space for ptr
+*@new_size:  new size, in bytes of the new memory block
+*Return: new allocate memory or NULL
+*/
+char **_realloc(char **ptr, size_t size)
+{
+	char **new;
+	size_t i;
+	
+	new = malloc(sizeof(char *) * (size));
+	if (new == NULL)
+		return NULL;
+	for (i = 0; i < size; i++)
+	{
+		new[i] = ptr[i];
+	}
+	return (new);
 }

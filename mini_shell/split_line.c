@@ -6,15 +6,13 @@ char **split_line(char *line)
         char ** word_arr = malloc(sizeof(char *));
         if(word_arr == NULL)
                 return NULL;
-
         token = strtok(line, TOK_DELIM);
-
         while(token != NULL)
         {
                 word_arr[j++] = token;
-                word_arr = realloc(word_arr, sizeof(char *) * (j + 1));
-                if (word_arr == NULL)
-                        return NULL;
+                word_arr = _realloc(word_arr, sizeof(char *) * (j + 1));
+		if (word_arr == NULL)
+			return NULL;
                 token = strtok(NULL, TOK_DELIM);
         }
         return word_arr;
