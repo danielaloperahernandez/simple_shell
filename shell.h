@@ -26,6 +26,7 @@ char **split_line(char *line);
 char *_getenv(const char *name);
 list_p *list_path();
 int _setenv(const char *name, const char *value, int overwrite);
+char *_which(char *arg[]);
 /**
  * useful functions
  */

@@ -14,6 +14,9 @@ int main(void)
 			break;
 		}
 		arg = split_line(line);
+
+		if (**arg != '/')
+			_which(arg);
 		execute_line(arg);
 		/*free (line);*/
 		/*for (len = 0; arg[len]; len++)
