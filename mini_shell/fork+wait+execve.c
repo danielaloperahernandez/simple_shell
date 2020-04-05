@@ -13,13 +13,13 @@ void execute_line(char **arg)
                 if ((stat(arg[0], &st)) == 0)
                 {
                         execve(arg[0], arg, NULL);
-                        perror("Error execve");
-                        exit(1);
+                        perror("Error");
+                        return;
                 }
                 else
                 {
-                        printf("not found");
-                        exit(1);
+			perror("Error");
+                        return;
                 }
         }
         else
@@ -27,4 +27,3 @@ void execute_line(char **arg)
                 wait(&status);
         }
 }
-	
