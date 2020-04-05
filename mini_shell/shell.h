@@ -25,12 +25,13 @@ void execute_line(char **arg);
 char *read_line(void);
 char **split_line(char *line);
 char *_getenv(const char *name);
+list_p *list_path();
 int _setenv(const char *name, const char *value, int overwrite);
 /**
- * useful_func
+ * functions in --useful_func.c
  */
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 list_p *add_node_end(list_p **head, const char *str);
 size_t print_list(const list_p *h);
-char *str_concat(const char *s1, const char *s2);
+char *str_concat(char *s1, char *s2);
