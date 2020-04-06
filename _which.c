@@ -8,8 +8,8 @@ char *_which(char *arg[])
 	head = list_path();
 	while(head)
         {
-                full_path = str_concat(head->dir, "/");
-                full_path = str_concat(full_path, arg[0]);
+                full_path = _strcat(head->dir, "/");
+                full_path = _strcat(full_path, arg[0]);
 
                 if (stat(full_path, &st) == 0)
                         break;
