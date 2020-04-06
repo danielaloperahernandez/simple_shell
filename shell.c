@@ -24,11 +24,9 @@ int main(int argc, char **argv, char **envp)
 		else
 			execute_line(arg, envp);
 		/*if (line != NULL)
-			free (line);*/
-		/*for (len = 0; arg[len]; len++)
-			free(arg[len]);
-		free(arg);
-		fflush(s:tdin);*/
+		  free (line);*/
+		/*free_loop(arg);*/
+		fflush(stdin);
 	}
 
 	return (0);

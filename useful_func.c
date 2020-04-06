@@ -174,3 +174,13 @@ int _strcmp(char *s1, char *s2)
 		s2++;
 	}
 }
+
+void free_loop(char **arr)
+{
+	int len;
+
+	for(len = 0; arr[len]; len++)
+		free(arr[len]);
+
+	free(arr);
+}

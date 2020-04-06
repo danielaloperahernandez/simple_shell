@@ -13,9 +13,7 @@ char **split_line(char *line)
                 word_arr = _realloc(word_arr, sizeof(char *) * (j + 1));
 		if (word_arr == NULL)
 		{
-			/*for (j = 0; word_arr[j]; j++)
-			free(word_arr[j]);
-			free(word_arr);*/
+			free_loop(word_arr);
 			return NULL;
                 }
 		token = strtok(NULL, TOK_DELIM);

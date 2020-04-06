@@ -40,3 +40,4 @@ char *_strcat(char *s1, char *s2);
 char *_strdup(char *str);
 char **_realloc(char **ptr, size_t size);
 int _strcmp(char *s1, char *s2);
+void free_loop(char **arr);
