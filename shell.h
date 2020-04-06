@@ -21,12 +21,14 @@ typedef struct list_path
         struct list_path *next;
 } list_p;
 
-void execute_line(char **arg);
+void execute_line(char **arg, char **env);
 char **split_line(char *line);
 char *_getenv(const char *name);
 list_p *list_path();
 int _setenv(const char *name, const char *value, int overwrite);
 char *_which(char *arg[]);
+void built_exit();
+void built_env(char **env);
 /**
  * useful functions
  */
@@ -37,3 +39,4 @@ size_t print_list(const list_p *h);
 char *str_concat(char *s1, char *s2);
 char *_strdup(char *str);
 char **_realloc(char **ptr, size_t size);
+int _strcmp(char *s1, char *s2);
