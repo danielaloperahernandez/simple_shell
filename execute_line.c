@@ -28,5 +28,6 @@ void execute_line(char **arg, char **env)
         else
         {
                 wait(&status);
+		free_loop(arg);
         }
 }

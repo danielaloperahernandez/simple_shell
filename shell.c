@@ -28,6 +28,5 @@ int main(int argc, char **argv, char **envp)
 		/*free_loop(arg);*/
 		fflush(stdin);
 	}
-
 	return (0);
 }
