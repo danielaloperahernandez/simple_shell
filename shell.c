@@ -16,6 +16,8 @@ int main(int argc, char **argv, char **envp)
 			free(line);
 			exit(0);
 		}
+		if (_strcmp(line, "\n") == 0)
+			continue;
 		arg = split_line(line);
 		if (_strcmp("exit", *arg) == 0)
 			built_exit();
@@ -28,5 +30,6 @@ int main(int argc, char **argv, char **envp)
 		/*free_loop(arg);*/
 		fflush(stdin);
 	}
+	free(line);
 	return (0);
 }
