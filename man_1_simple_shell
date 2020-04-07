@@ -1,0 +1,56 @@
+.TH HSH 1 "10 Mar 2020" "V 1.0" "hsh usage manual"
+
+.SH NAME
+
+.B hsh
+- UNIX command line interpreter.
+
+.SH SYNOPSIS
+
+.br
+usage in interactive mode
+
+.br
+./hsh
+
+.br
+usage in non-interactive mode
+
+.br
+echo [command_string | file] | ./hsh
+
+.br in
+.SH DESCRIPTION
+
+.B hsh
+is a UNIX command interpreter that executes commands read from the standard input or from a file.
+
+.B hsh
+was made and tested to run in Ubuntu 14.04 LTS.
+
+.B hsh
+also incorporate the build-in commands: exit, env.
+
+
+.SH OPTIONS
+.br
+No options are received at call or inside of the program.
+
+.SH ARGUMENTS
+.br
+No arguments are received at call or inside of the program.
+
+.SH PARAMETERS
+.br
+Parameters are received to start with non-interactive mode and shoould be sended in this way
+.br
+echo "/bin/ls" | ./hsh
+
+.SH RETURN
+
+On exit 0, on failure or error 1.
+
+.SH EXAMPLES
+
+.SH AUTHOR
+Daniela Lopera and Diana Quintero
