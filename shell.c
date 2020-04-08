@@ -20,14 +20,11 @@ int main(int argc, char **argv, char **envp)
 			continue;
 		arg = split_line(line);
 		if (_strcmp("exit", *arg) == 0)
-			built_exit();
+			built_exit(line, arg);
 		else if (_strcmp("env", *arg) == 0)
-			built_env(envp);
+			built_env(arg, envp);
 		else
 			execute_line(arg, envp);
-		/*if (line != NULL)
-		  free (line);*/
-		/*free_loop(arg);*/
 		fflush(stdin);
 	}
 	free(line);

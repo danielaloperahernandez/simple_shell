@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <stddef.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
@@ -27,8 +28,8 @@ char *_getenv(const char *name);
 list_p *list_path();
 int _setenv(const char *name, const char *value, int overwrite);
 char *_which(char *arg[]);
-void built_exit();
-void built_env(char **env);
+void built_exit(char *line, char **arg);
+void built_env(char **arg, char **env);
 /**
  * useful functions
  */
@@ -41,3 +42,4 @@ char *_strdup(char *str);
 char **_realloc(char **ptr, size_t size);
 int _strcmp(char *s1, char *s2);
 void free_loop(char **arr);
+char *_strncpy(char *dest, char *src, int n);
