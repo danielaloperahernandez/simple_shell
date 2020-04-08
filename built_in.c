@@ -5,9 +5,10 @@ void built_exit(char *line, char **arg)
 	free_loop(arg);
 	exit(0);
 }
-void built_env(char **arg, char **env)
+void built_env(char **arg)
 {
-	char **aux = env;
+	extern char **environ;
+	char **aux = environ;
 
 	while (*aux != NULL)
         {

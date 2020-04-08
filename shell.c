@@ -1,11 +1,9 @@
 #include "shell.h"
-int main(int argc, char **argv, char **envp)
+int main(void)
 {
 	char *line = NULL;
 	char **arg;
 	size_t bufsize = 0;
-	(void)argc;
-	(void)argv;
 
 	while (1)
 	{
@@ -22,9 +20,9 @@ int main(int argc, char **argv, char **envp)
 		if (_strcmp("exit", *arg) == 0)
 			built_exit(line, arg);
 		else if (_strcmp("env", *arg) == 0)
-			built_env(arg, envp);
+			built_env(arg);
 		else
-			execute_line(arg, envp);
+			execute_line(arg);
 		fflush(stdin);
 	}
 	free(line);
