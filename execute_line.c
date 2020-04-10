@@ -3,27 +3,23 @@ void execute_line(char **argv, char **commands, int count)
 {
 	pid_t pid;
 	int status;
-	struct stat st;
-	char *new_path;
+	char *full_path;
 	extern char **environ;
 
 	pid = fork();
 	if (pid < 0)
-			perror("Error:");
+		perror("Error:");
 	if (pid == 0)
 	{
-		if (**commands == '/')
+		full_path = commands[0];
+		if (**commands != '/')
+			full_path = _which(commands);
+
+		if (access(full_path, X_OK) == 0)
 		{
-			if ((stat(commands[0], &st)) == 0)
-				execve(commands[0], commands, environ);
+			execve(full_path, commands, environ);
 		}
-		else
-		{
-			new_path = _which(commands);
-			if ((stat(new_path, &st)) == 0)
-				execve(new_path, commands, environ);
-		}
-		no_found(argv, commands[0], count);
+		_error(argv, commands[0], count);
 		exit(1);
 	}
 	else

@@ -3,9 +3,10 @@ int _werror(char c)
 {
 	return (write(STDERR_FILENO, &c, 1));
 }
-void no_found(char **argv, char *first, int count)
+void _error(char **argv, char *first, int count)
 {
 	int nlen = 1, powten = 1, count2;
+	struct stat st;
 
 	write(STDERR_FILENO, argv[0], _strlen(argv[0]));
 	write(STDERR_FILENO, ":", 2);
@@ -28,6 +29,15 @@ void no_found(char **argv, char *first, int count)
 		powten /= 10;
 	}
 	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, first, _strlen(first));	
-	write(STDERR_FILENO, ": not found\n", 12);
+	write(STDERR_FILENO, first, _strlen(first));
+	write(STDERR_FILENO, ": ", 2);
+	if (stat(first, &st) == 0 && S_ISDIR(st.st_mode))
+	{
+		if (access(first, W_OK) == -1)
+			perror("");
+	}
+	else
+	{
+		write(STDERR_FILENO, "not found\n", 10);
+	}
 }

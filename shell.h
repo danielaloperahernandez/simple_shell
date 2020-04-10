@@ -30,7 +30,7 @@ int _setenv(const char *name, const char *value, int overwrite);
 char *_which(char *arg[]);
 void built_exit(char *line, char **arg);
 void built_env(char **arg);
-void no_found(char **argv, char *first, int count);
+void _error(char **argv, char *first, int count);
 /**
  * useful functions
  */
