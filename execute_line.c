@@ -1,5 +1,5 @@
 #include "shell.h"
-void execute_line(char **arg)
+void execute_line(char **argv, char **commands, int count)
 {
 	pid_t pid;
 	int status;
@@ -9,26 +9,26 @@ void execute_line(char **arg)
 
 	pid = fork();
 	if (pid < 0)
-			perror("error fork");
+			perror("Error:");
 	if (pid == 0)
 	{
-		if (**arg == '/')
+		if (**commands == '/')
 		{
-			if ((stat(arg[0], &st)) == 0)
-				execve(arg[0], arg, environ);
+			if ((stat(commands[0], &st)) == 0)
+				execve(commands[0], commands, environ);
 		}
 		else
 		{
-			new_path = _which(arg);
+			new_path = _which(commands);
 			if ((stat(new_path, &st)) == 0)
-				execve(new_path, arg, environ);
+				execve(new_path, commands, environ);
 		}
-		perror("Error");
+		no_found(argv, commands[0], count);
 		exit(1);
 	}
 	else
 	{
 		wait(&status);
-		free_loop(arg);
+		free_loop(commands);
 	}
 }

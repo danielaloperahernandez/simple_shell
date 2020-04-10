@@ -22,7 +22,7 @@ typedef struct list_path
         struct list_path *next;
 } list_p;
 
-void execute_line(char **arg);
+void execute_line(char **argv, char **commands, int count);
 char **split_line(char *line);
 char *_getenv(const char *name);
 list_p *list_path();
@@ -30,6 +30,7 @@ int _setenv(const char *name, const char *value, int overwrite);
 char *_which(char *arg[]);
 void built_exit(char *line, char **arg);
 void built_env(char **arg);
+void no_found(char **argv, char *first, int count);
 /**
  * useful functions
  */

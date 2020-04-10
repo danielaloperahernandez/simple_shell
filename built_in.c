@@ -1,11 +1,11 @@
 #include "shell.h"
-void built_exit(char *line, char **arg)
+void built_exit(char *line, char **commands)
 {
 	free(line);
-	free_loop(arg);
+	free_loop(commands);
 	exit(0);
 }
-void built_env(char **arg)
+void built_env(char **commands)
 {
 	extern char **environ;
 	char **aux = environ;
@@ -15,5 +15,5 @@ void built_env(char **arg)
                 printf("%s\n", *aux);
                 aux++;
         }
-	free_loop(arg);
+	free_loop(commands);
 }

@@ -1,16 +1,18 @@
 #include "shell.h"
-int main(void)
+int main(int argc, char **argv)
 {
 	char *line = NULL;
-	char **arg;
+	char **commands;
 	size_t bufsize = 0;
-	int line_len = 0;
+	int line_len = 0, count = 0;
+	(void)argc;
 
 	while (1)
 	{
 		if (isatty(fileno(stdin)))
-			write(1, "#cisfun$ ", 9);
+			write(1, "($) ", 4);
 		line_len = getline(&line, &bufsize, stdin);
+		count++;
 		if (line_len == -1 && isatty(fileno(stdin)))
 		{
 			write(1, "\n", 1);
@@ -24,15 +26,15 @@ int main(void)
 		}
 		if (_strcmp(line, "\n") == 0)
 			continue;
-		arg = split_line(line);
-		if (!*arg)
+		commands = split_line(line);
+		if (!*commands)
 			continue;
-		if (_strcmp("exit", *arg) == 0)
-			built_exit(line, arg);
-		else if (_strcmp("env", *arg) == 0)
-			built_env(arg);
+		if (_strcmp("exit", *commands) == 0)
+			built_exit(line, commands);
+		else if (_strcmp("env", *commands) == 0)
+			built_env(commands);
 		else
-			execute_line(arg);
+			execute_line(argv, commands, count);
 		fflush(stdin);
 	}
 	free(line);

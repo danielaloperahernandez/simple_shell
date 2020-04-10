@@ -20,7 +20,7 @@ int _strlen(char *s)
  *@src: make
  * Return: return the value dest
  */
-char *_strcpy(char *dest, char *src)
+/*char *_strcpy(char *dest, char *src)
 {
 	int cont;
 
@@ -30,7 +30,7 @@ char *_strcpy(char *dest, char *src)
 	}
 	dest[cont] = '\0';
 	return (dest);
-}
+}*/
 
 /**
  *add_node_end - append node to list pointed
@@ -142,7 +142,7 @@ char *_strdup(char *str)
 *@new_size:  new size, in bytes of the new memory block
 *Return: new allocate memory or NULL
 */
-char **_realloc(char **ptr, size_t size)
+/*char **_realloc(char **ptr, size_t size)
 {
 	char **new;
 	size_t i;
@@ -155,7 +155,7 @@ char **_realloc(char **ptr, size_t size)
 		new[i] = ptr[i];
 	}
 	return (new);
-}
+}*/
 /**
 * _strcmp - compares two strings
 * @s1: string to compare
