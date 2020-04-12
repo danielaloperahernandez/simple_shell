@@ -1,9 +1,9 @@
 #include "shell.h"
 /**
- * _strlen - return length of a string
- * @s: char type
- * Return:  length of string
- */
+* _strlen - return length of a string
+* @s: char type
+* Return: length of string
+*/
 int _strlen(char *s)
 {
 	int len;
@@ -12,74 +12,6 @@ int _strlen(char *s)
 	while (s[len] != '\0')
 		len++;
 	return (len);
-}
-
-/**
- *_strcpy - make
- *@dest: make
- *@src: make
- * Return: return the value dest
- */
-/*char *_strcpy(char *dest, char *src)
-{
-	int cont;
-
-	for (cont = 0; src[cont] != '\0'; cont++)
-	{
-		dest[cont] = src[cont];
-	}
-	dest[cont] = '\0';
-	return (dest);
-}*/
-
-/**
- *add_node_end - append node to list pointed
- *@head: pointer to pointer
- *@str: string to initialize new node
- *Return: new or NULL
- */
-list_p *add_node_end(list_p **head, const char *dir)
-{
-        list_p *last = *head;
-        list_p *new = malloc(sizeof(list_p));
-
-        if (new == NULL)
-                return (NULL);
-        new->next = NULL;
-        new->dir = _strdup((char *)dir);
-        if (last)
-        {
-                while (last->next)
-                        last = last->next;
-                last->next = new;
-        }
-        else
-                *head = new;
-        return (new);
-}
-
-/**
- * print_list - prints all the elements of a list_p list.
- * If str is NULL, print [0] (nil).
- * @h: pointer to list_p element.
- * Return: the number of nodes.
- */
-size_t print_list(const list_p *h)
-{
-	unsigned int index = 0;
-
-	while (h != NULL)
-	{
-		if (!h->dir)
-			printf("[0] (nil)\n");
-		else
-			printf("%s\n", h->dir);
-
-		h = h->next;
-		index++;
-	}
-
-	return (index);
 }
 /**
  *_strcat - concatenates two strings
@@ -118,7 +50,6 @@ char *_strcat(char *s1, char *s2)
 *@str: string given as a parameter
 *Return:  pointer to the duplicated string or NULL
 */
-
 char *_strdup(char *str)
 {
 	int i, j;
@@ -135,27 +66,6 @@ char *_strdup(char *str)
 		dup[j] = str[j];
 	return (dup);
 }
-/**
-*_realloc - reallocates a memory block using malloc and free
-*@ptr: pointer to the memory previously allocated
-*@old_size: size in bytes of the allocated space for ptr
-*@new_size:  new size, in bytes of the new memory block
-*Return: new allocate memory or NULL
-*/
-/*char **_realloc(char **ptr, size_t size)
-{
-	char **new;
-	size_t i;
-
-	new = malloc(sizeof(char *) * (size));
-	if (new == NULL)
-		return NULL;
-	for (i = 0; i < size; i++)
-	{
-		new[i] = ptr[i];
-	}
-	return (new);
-}*/
 /**
 * _strcmp - compares two strings
 * @s1: string to compare
@@ -175,15 +85,6 @@ int _strcmp(char *s1, char *s2)
 	}
 }
 
-void free_loop(char **arr)
-{
-	int len;
-
-	for(len = 0; arr[len]; len++)
-		free(arr[len]);
-
-	free(arr);
-}
 /**
 *_strncpy - concatenates two strings
 * @dest: string pointer

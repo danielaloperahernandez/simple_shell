@@ -35,7 +35,7 @@ total 72
 /home/vagrant/simple_shell
 ($)
 ```
-```{bash} 
+```{bash}
 ($) exit
 $
 ```
@@ -51,22 +51,22 @@ $
 $ echo "///////bin/////ls" | ./hsh
 built_in.c      _getenv.c    man_1_simple_shell  shell.c         split_line.c
 error.c         hsh          mini_shell          shell.h         useful_func.c
-execute_line.c  list_path.c  README.md           special_case.c  _which.c   
+execute_line.c  list_path.c  README.md           special_case.c  _which.c
 $
-``` 
+```
 ```{bash}
 $ echo "non-interactive" | /bin/sh
 /bin/sh: 1: non-interactive: not found
 $
-```  
+```
 ### Built-ins
 The simple shell has support for the following built-in commands:
 Command   |   Definition
 ---------------- | ------------------ |
 env | Prints the environment
 exit | Exits the shell
-### Shell Flow Chart:  
-                                                                                                                                               
+### Shell Flow Chart:
+
 ![Image of Flowchart](https://i.imgur.com/WcN0ccr.jpg)
 
 ### Contributors

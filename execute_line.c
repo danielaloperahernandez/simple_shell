@@ -1,10 +1,18 @@
 #include "shell.h"
-void execute_line(char **argv, char **commands, int count, int *exit_st)
+/**
+*_execute - function that executes in the main shell
+*@argv: argument char-pointers array
+*@commands: split arguments
+*@count: count of commands that were run
+*@env: the environment
+*@exit_st: exit status
+*/
+void execute_line(char **argv, char **commands, int count,
+char **env, int *exit_st)
 {
 	pid_t pid;
 	int status;
 	char *full_path;
-	extern char **environ;
 
 	pid = fork();
 	if (pid < 0)
@@ -17,7 +25,7 @@ void execute_line(char **argv, char **commands, int count, int *exit_st)
 
 		if (access(full_path, X_OK) == 0)
 		{
-			execve(full_path, commands, environ);
+			execve(full_path, commands, env);
 		}
 		_error(argv, commands[0], count, &exit_st);
 		exit(*exit_st);

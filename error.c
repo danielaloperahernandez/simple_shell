@@ -1,8 +1,21 @@
 #include "shell.h"
+/**
+*_werror - puts a char to the std error
+*@c: character to write
+*Return: int to print
+*/
 int _werror(char c)
 {
 	return (write(STDERR_FILENO, &c, 1));
 }
+/**
+*_error - writes an error message similar to the sh error
+*when command not found
+*@argv: the argv from the main function
+*@first: first command to print if not found
+*@count: the number of times you have done a command
+*@exit_st: exit status
+*/
 void _error(char **argv, char *first, int count, int **exit_st)
 {
 	int nlen = 1, powten = 1, count2;
@@ -24,7 +37,6 @@ void _error(char **argv, char *first, int count, int **exit_st)
 			_werror(count / powten + '0');
 		else
 			_werror(((count / powten) % 10 + '0'));
-
 		--nlen;
 		powten /= 10;
 	}
@@ -34,8 +46,8 @@ void _error(char **argv, char *first, int count, int **exit_st)
 	if (stat(first, &st) == 0 && S_ISDIR(st.st_mode))
 	{
 		/*if (access(first, W_OK) == -1)*/
-			**exit_st = 126;
-			perror("");
+		**exit_st = 126;
+		perror("");
 	}
 	else
 	{

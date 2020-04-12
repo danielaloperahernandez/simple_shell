@@ -1,5 +1,12 @@
 #include "shell.h"
-int main(int argc, char **argv)
+/**
+*main - Program that is a simple UNIX command interpreter
+*@argc: argument count
+*@argv: argument char-pointers array
+*@env: the environment
+*Return: 0
+*/
+int main(int argc, char **argv, char **env)
 {
 	char *line = NULL;
 	char **commands;
@@ -7,7 +14,7 @@ int main(int argc, char **argv)
 	ssize_t line_len = 0, count = 0;
 	int exit_st;
 	(void)argc;
-	
+
 	while (1)
 	{
 		if (isatty(fileno(stdin)))
@@ -22,9 +29,9 @@ int main(int argc, char **argv)
 		if (_strcmp("exit", *commands) == 0)
 			built_exit(line, commands, &exit_st);
 		else if (_strcmp("env", *commands) == 0)
-			built_env(commands);
+			built_env(commands, env);
 		else
-			execute_line(argv, commands, count, &exit_st);
+			execute_line(argv, commands, count, env, &exit_st);
 		fflush(stdin);
 	}
 	free(line);
