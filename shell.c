@@ -4,7 +4,7 @@ int main(int argc, char **argv)
 	char *line = NULL;
 	char **commands;
 	size_t bufsize = 0;
-	int line_len = 0, count = 0;
+	ssize_t line_len = 0, count = 0;
 	int exit_st;
 	(void)argc;
 	
@@ -14,18 +14,7 @@ int main(int argc, char **argv)
 			write(1, "($) ", 4);
 		line_len = getline(&line, &bufsize, stdin);
 		count++;
-		if (line_len == -1 && isatty(fileno(stdin)))
-		{
-			write(1, "\n", 1);
-			free(line);
-			exit(exit_st);
-		}
-                if (line_len == -1 && !isatty(fileno(stdin)))
-		{
-			free(line);
-			exit(exit_st);
-		}
-		if (_strcmp(line, "\n") == 0)
+		if (special_case(line, line_len, &exit_st) == 3)
 			continue;
 		commands = split_line(line);
 		if (!*commands)

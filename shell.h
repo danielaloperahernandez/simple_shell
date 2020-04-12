@@ -31,6 +31,7 @@ char *_which(char *arg[]);
 void built_exit(char *line, char **arg, int *exit_st);
 void built_env(char **arg);
 void _error(char **argv, char *first, int count, int **exit_st);
+int special_case(char *line, ssize_t line_len, int *exit_st);
 /**
  * useful functions
  */
