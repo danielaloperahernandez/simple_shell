@@ -28,10 +28,12 @@ total 72
 -rw-rw-r-- 1 vagrant vagrant   555 Apr 12 14:27 execute_line.c
 -rw-rw-r-- 1 vagrant vagrant   305 Apr 10 00:46 _getenv.c
 -rwxrwxr-x 1 vagrant vagrant 14563 Apr 12 12:57 hsh
+($)
 ```
 ```{bash}
 ($) pwd
 /home/vagrant/simple_shell
+($)
 ```
 ```{bash} 
 ($) exit
@@ -54,6 +56,7 @@ $
 ``` 
 ```{bash}
 $ echo "non-interactive" | /bin/sh
+/bin/sh: 1: non-interactive: not found
 $
 ```  
 ### Built-ins
@@ -64,7 +67,7 @@ env | Prints the environment
 exit | Exits the shell
 ### Shell Flow Chart:  
                                                                                                                                                
-![Image of Flowchart](https://i.ibb.co/JBsMXWP/simple-300.jpg)
+![Image of Flowchart](https://i.imgur.com/WcN0ccr.jpg)
 
 ### Contributors
 - [Diana Carolina Quintero Caro](https://github.com/KaroDev3)
