@@ -19,14 +19,53 @@ The files will be compiled this way:
 - ``gcc -Wall -Werror -Wextra -pedantic *.c -o hsh``
 ### Usage
 The shell works like this in interactive mode:
+
+```{bash}
+($) ls -l
+total 72
+-rw-rw-r-- 1 vagrant vagrant   343 Apr 12 01:02 built_in.c
+-rw-rw-r-- 1 vagrant vagrant   850 Apr 12 01:02 error.c
+-rw-rw-r-- 1 vagrant vagrant   555 Apr 12 14:27 execute_line.c
+-rw-rw-r-- 1 vagrant vagrant   305 Apr 10 00:46 _getenv.c
+-rwxrwxr-x 1 vagrant vagrant 14563 Apr 12 12:57 hsh
+```
+```{bash}
+($) pwd
+/home/vagrant/simple_shell
+```
+```{bash} 
+($) exit
+$
+```
 The shell works like this in non-interactive mode:
+```{bash}
+$ echo "/bin/ls" | ./hsh
+built_in.c      _getenv.c    man_1_simple_shell  shell.c         split_line.c
+error.c         hsh          mini_shell          shell.h         useful_func.c
+execute_line.c  list_path.c  README.md           special_case.c  _which.c
+$
+```
+```{bash}
+$ echo "///////bin/////ls" | ./hsh
+built_in.c      _getenv.c    man_1_simple_shell  shell.c         split_line.c
+error.c         hsh          mini_shell          shell.h         useful_func.c
+execute_line.c  list_path.c  README.md           special_case.c  _which.c   
+$
+``` 
+```{bash}
+$ echo "non-interactive" | /bin/sh
+$
+```  
 ### Built-ins
 The simple shell has support for the following built-in commands:
 Command   |   Definition
 ---------------- | ------------------ |
 env | Prints the environment
 exit | Exits the shell
-### Shell Flow Chart
+### Shell Flow Chart:  
+                                                                                                                                               
+![Image of Flowchart](https://i.ibb.co/JBsMXWP/simple-300.jpg)
+
 ### Contributors
-Diana Carolina Quintero Caro
-Daniela Lopera Hernández
+- [Diana Carolina Quintero Caro](https://github.com/KaroDev3)
+- [Daniela Lopera Hernández](https://github.com/danielaloperahernandez)
