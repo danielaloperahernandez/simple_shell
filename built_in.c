@@ -1,9 +1,9 @@
 #include "shell.h"
-void built_exit(char *line, char **commands)
+void built_exit(char *line, char **commands, int *exit_st)
 {
 	free(line);
 	free_loop(commands);
-	exit(0);
+	exit(*exit_st);
 }
 void built_env(char **commands)
 {

@@ -1,5 +1,5 @@
 #include "shell.h"
-void execute_line(char **argv, char **commands, int count)
+void execute_line(char **argv, char **commands, int count, int *exit_st)
 {
 	pid_t pid;
 	int status;
@@ -19,12 +19,13 @@ void execute_line(char **argv, char **commands, int count)
 		{
 			execve(full_path, commands, environ);
 		}
-		_error(argv, commands[0], count);
-		exit(1);
+		_error(argv, commands[0], count, &exit_st);
+		exit(*exit_st);
 	}
 	else
 	{
 		wait(&status);
+		*exit_st = WEXITSTATUS(status);
 		free_loop(commands);
 	}
 }

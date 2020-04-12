@@ -3,7 +3,7 @@ int _werror(char c)
 {
 	return (write(STDERR_FILENO, &c, 1));
 }
-void _error(char **argv, char *first, int count)
+void _error(char **argv, char *first, int count, int **exit_st)
 {
 	int nlen = 1, powten = 1, count2;
 	struct stat st;
@@ -33,11 +33,13 @@ void _error(char **argv, char *first, int count)
 	write(STDERR_FILENO, ": ", 2);
 	if (stat(first, &st) == 0 && S_ISDIR(st.st_mode))
 	{
-		if (access(first, W_OK) == -1)
+		/*if (access(first, W_OK) == -1)*/
+			**exit_st = 126;
 			perror("");
 	}
 	else
 	{
+		**exit_st = 127;
 		write(STDERR_FILENO, "not found\n", 10);
 	}
 }
