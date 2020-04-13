@@ -1,5 +1,14 @@
 #include "shell.h"
 /**
+*INThandler - fuction invoked for a signal function and show the prompt
+*@sig_n: number of the signal
+*/
+void INThandler(int sig_n)
+{
+	(void)sig_n;
+	write(STDOUT_FILENO, "\n($) ", 5);
+}
+/**
 *main - Program that is a simple UNIX command interpreter
 *@argc: argument count
 *@argv: argument char-pointers array
@@ -19,6 +28,7 @@ int main(int argc, char **argv, char **env)
 	{
 		if (isatty(fileno(stdin)))
 			write(1, "($) ", 4);
+		signal(SIGINT, INThandler);
 		line_len = getline(&line, &bufsize, stdin);
 		count++;
 		if (special_case(line, line_len, &exit_st) == 3)
