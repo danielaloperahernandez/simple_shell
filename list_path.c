@@ -26,16 +26,17 @@ list_p *add_node_end(list_p **head, const char *dir)
 }
 /**
  *list_path - function that builds a linked list of the PATH directories
+ *@env: environment variables
  *Return: the head of the list
  */
-list_p *list_path(void)
+list_p *list_path(char **env)
 {
 	char *token;
 	char *path;
 	list_p *head;
 
 	head = NULL;
-	path = _getenv("PATH");
+	path = _getenv("PATH", env);
 	token = strtok(path, ":");
 	while (token != NULL)
 	{

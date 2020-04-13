@@ -21,7 +21,7 @@ char **env, int *exit_st)
 	{
 		full_path = commands[0];
 		if (**commands != '/')
-			full_path = _which(commands);
+			full_path = _which(commands, env);
 
 		if (access(full_path, X_OK) == 0)
 		{
