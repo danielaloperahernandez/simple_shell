@@ -1,0 +1,143 @@
+.TH HSH 1 "12 Apr 2020" "V 1.0" "hsh usage manual"
+
+.SH NAME
+
+.B hsh
+- command interpreter (shell)
+
+.SH SYNOPSIS
+
+.br
+Run interactive mode:
+
+.B ./hsh
+
+.br
+Run non-interactive mode:
+
+.br
+echo [command_string | file] |
+.B ./hsh
+
+.SH DESCRIPTION
+
+.B hsh
+is a command interpreter that executes commands. Run interactive mode to get a prompt reading line by line from the standard input. Run non-interactive mode to read from a file
+or command_string passed through pipe.
+
+.B hsh
+also incorporate the build-in commands
+.I exit
+and
+.I env
+
+.B hsh
+was tested to run in Ubuntu 14.04 LTS. And was designed to work as close as possible like
+.I sh
+(default shell).
+
+.SH DEFINITIONS
+.B word
+is a sequence of characters considered as a single unit.
+
+.B name
+is a word consisting only of alphanumeric characters and underscores, and beginning with an alphabetic character or an underscore.
+
+.SH ARGUMENTS
+.br
+After a command has been split into words, the first word is assumed to be the name of a command or executable file. The subsequents arguments are passed like arguments to that command.
+
+.SH COMMAND EXECUTION
+
+.br
+If the command
+.I name
+do not start with slash (/), the shell attempts to locate it. If there exists a shell build-in by that name then invoke them.
+
+If the name is not a built-in,
+.I hsh
+searches each element of the PATH for a directory containing an executable file by that name.
+
+If the
+.I name
+start with slash (/), then checks if it is a valid pathname of a executable file and execute them. If it is a directory, an error message is displayed. 
+
+.SH SHELL BUILTIN COMMANDS
+
+.br Build-ins do not receive parameters, any parameter is ignored.
+
+.B env
+print the current Environment variables.
+
+.B exit
+cause the shell to exit. the exit status is that of the last command executed.
+
+.SH RETURN
+
+The return value of the most recent command executed before receive the
+.I EOF
+(end-of-file) condition
+.I Ctrl+D
+or the build-in
+.I exit
+is invoked.
+
+.SH EXAMPLES
+
+The shell works like this in interactive mode:
+
+.br
+	($) pwd
+.br
+	/home/vagrant/simple_shell
+.br
+	($) exit
+.br
+	$
+
+.br
+Running commands with arguments:
+
+.br
+	($) ls -l
+.br
+	total 72
+.br
+	-rw-rw-r-- 1 vagrant vagrant   343 Apr 12 01:02 built_in.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant   850 Apr 12 01:02 error.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant   555 Apr 12 14:27 execute_line.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant   305 Apr 10 00:46 _getenv.c
+.br
+	-rwxrwxr-x 1 vagrant vagrant 14563 Apr 12 12:57 hsh
+.br
+	($)
+
+.br
+The shell works like this in non-interactive mode:
+
+.br
+	$ echo "/bin/ls" | ./hsh
+.br
+	built_in.c      _getenv.c    man_1_simple_shell  shell.c         split_line.c
+.br
+	error.c         hsh          mini_shell          shell.h         useful_func.c
+.br
+	execute_line.c  list_path.c  README.md           special_case.c  _which.c
+.br
+	$
+
+.br
+Command error example:
+
+.br
+	$ echo "non-interactive" | ./hsh
+.br
+	./hsh: 1: non-interactive: not found
+.br
+	$
+
+.SH AUTHOR
+Daniela Lopera and Diana Quintero
