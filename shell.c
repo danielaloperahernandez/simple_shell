@@ -26,7 +26,7 @@ int main(int argc, char **argv, char **env)
 
 	while (1)
 	{
-		if (isatty(fileno(stdin)))
+		if (isatty(STDIN_FILENO) == 1)
 			write(1, "($) ", 4);
 		signal(SIGINT, INThandler);
 		line_len = getline(&line, &bufsize, stdin);
