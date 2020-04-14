@@ -17,6 +17,12 @@ The Simple Shell is a simple UNIX command interpreter written in C. The program 
 All of the ``.c`` files along with a main.c file are to be compiled with ``gcc 4.8.4`` on Ubuntu 14.04 LTS with the flags ``-Wall Werror`` ``-Wextra`` and ``-pedantic.``
 The files will be compiled this way:
 - ``gcc -Wall -Werror -Wextra -pedantic *.c -o hsh``
+
+### Execute
+```{bash}
+$ ./hsh
+```
+
 ### Usage
 The shell works like this in interactive mode:
 
@@ -55,8 +61,8 @@ execute_line.c  list_path.c  README.md           special_case.c  _which.c
 $
 ```
 ```{bash}
-$ echo "non-interactive" | /bin/sh
-/bin/sh: 1: non-interactive: not found
+$ echo "non-interactive" | ./hsh
+./hsh: 1: non-interactive: not found
 $
 ```
 ### Built-ins

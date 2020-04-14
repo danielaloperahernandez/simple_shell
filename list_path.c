@@ -37,6 +37,8 @@ list_p *list_path(char **env)
 
 	head = NULL;
 	path = _getenv("PATH", env);
+	if (path[0] == ':')
+		add_node_end(&head, ".");
 	token = strtok(path, ":");
 	while (token != NULL)
 	{
