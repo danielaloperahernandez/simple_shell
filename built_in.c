@@ -50,14 +50,15 @@ void built_exit(char *line, char **commands, int *exit_st)
 	int num = 0;
 
 	free(line);
-	if (commands[1] && num_is_positive(commands[1]) == 0)
+	if (commands[1])
 	{
-		num = _atoi(commands[1]);
-		*exit_st = num;
-	}
-	else if (num_is_positive(commands[1]) == -1)
-	{
-		write(1, "Ilegal number\n", 14);
+		if (num_is_positive(commands[1]) == 0)
+		{
+			num = _atoi(commands[1]);
+			*exit_st = num;
+		}
+		else
+			write(1, "Ilegal number\n", 14);
 	}
 	free_loop(commands);
 	exit(*exit_st);
