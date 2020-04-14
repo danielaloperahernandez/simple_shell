@@ -13,7 +13,7 @@ void free_loop(char **arr)
 }
 
 /**
- *free_listint - frees a listint_t list
+ *free_list - frees a listint_t list
  *@head: head of a listint_t list
  */
 void free_list(list_p *head)
