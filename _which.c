@@ -8,23 +8,27 @@
 char *_which(char **commands, char **env)
 {
 	list_p *head;
+	list_p *aux;
+	char *first_part = NULL;
 	char *full_path = NULL;
+	char *final_path = NULL;
 	struct stat st;
 
 	head = list_path(env);
-	while (head)
+	aux = head;
+	while (aux)
 	{
-		full_path = _strcat(head->dir, "/");
-		full_path = _strcat(full_path, commands[0]);
-
+		first_part = _strcat(aux->dir, "/");
+		full_path = _strcat(first_part, commands[0]);
+		free(first_part);
 		if (stat(full_path, &st) == 0)
+		{
+			final_path = full_path;
 			break;
-		head = head->next;
+		}
+		free(full_path);
+		aux = aux->next;
 	}
-	if (full_path == NULL)
-	{
-		perror("");
-		return (NULL);
-	}
-	return (full_path);
+	free_list(head);
+	return (final_path);
 }

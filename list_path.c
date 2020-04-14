@@ -5,13 +5,11 @@
  *@dir: string to initialize new node
  *Return: new or NULL
  */
-list_p *add_node_end(list_p **head, const char *dir)
+void add_node_end(list_p **head, const char *dir)
 {
 	list_p *last = *head;
 	list_p *new = malloc(sizeof(list_p));
 
-	if (new == NULL)
-		return (NULL);
 	new->next = NULL;
 	new->dir = _strdup((char *)dir);
 	if (last)
@@ -22,7 +20,6 @@ list_p *add_node_end(list_p **head, const char *dir)
 	}
 	else
 		*head = new;
-	return (new);
 }
 /**
  *list_path - function that builds a linked list of the PATH directories
