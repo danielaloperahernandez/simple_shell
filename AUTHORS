@@ -1,4 +1,7 @@
+- 'EOH'
 # This file lists all individuals having contributed content to the repository.
+# For how it is generated, see `hack/generate-authors.sh`.
 
-Daniela Lopera <1469@holbertonschool.com>
-Diana Carolina Quintero Caro <karodev3@gmail.com>
+daniela <1469@holbertonschool.com>
+danielaloperahernandez <1469@holbertonschool.com>
+KaroDev3 <karodev3@gmail.com>
