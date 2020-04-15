@@ -26,5 +26,6 @@ int special_case(char *line, ssize_t line_len, int *exit_st)
 		*exit_st = 0;
 		return (3);
 	}
+	*exit_st = 0;
 	return (0);
 }
