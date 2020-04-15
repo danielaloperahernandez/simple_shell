@@ -8,7 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-#define TOK_DELIM " \t\r\n"
+#define TOK_DELIM " \t\r\n\v\a"
 /**
 * struct list_path - singly linked list
 * @dir: string - (malloc'ed string)
