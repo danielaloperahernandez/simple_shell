@@ -21,7 +21,7 @@ void execute_line(char **argv, char **commands, int count,
 	if (pid == 0)
 	{
 		full_path = commands[0];
-		if (**commands != '/')
+		if (**commands != '/' && _strcmp(commands[0], "..") != 0)
 			full_path = _which(commands, env);
 		if (full_path)
 		{
