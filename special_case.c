@@ -10,6 +10,9 @@
 */
 int special_case(char *line, ssize_t line_len, int *exit_st)
 {
+	int i = 0;
+	int len = 0;
+
 	if (line_len == -1 && isatty(STDIN_FILENO) == 1)
 	{
 		write(1, "\n", 1);
@@ -26,6 +29,13 @@ int special_case(char *line, ssize_t line_len, int *exit_st)
 		*exit_st = 0;
 		return (3);
 	}
+	len = _strlen(line);
+	while (i < len - 2)
+	{
+		if (line[i] != ' ' && line[i] != '\t')
+			return (0);
+		++i;
+	}
 	*exit_st = 0;
-	return (0);
+	return (3);
 }

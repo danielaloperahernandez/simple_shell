@@ -34,8 +34,6 @@ int main(int argc, char **argv, char **env)
 		if (special_case(line, line_len, &exit_st) == 3)
 			continue;
 		commands = split_line(line);
-		if (!*commands)
-			continue;
 		if (_strcmp("exit", *commands) == 0)
 			built_exit(line, commands, &exit_st);
 		else if (_strcmp("env", *commands) == 0)
