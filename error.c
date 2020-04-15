@@ -45,8 +45,9 @@ void _error(char **argv, char *first, int count, int **exit_st)
 	write(STDERR_FILENO, ": ", 2);
 	if (stat(first, &st) == 0 && S_ISDIR(st.st_mode))
 	{
-		/*if (access(first, W_OK) == -1)*/
 		**exit_st = 126;
+		if (_strcmp(first, "..") == 0)
+			**exit_st = 127;
 		perror("");
 	}
 	else
