@@ -39,7 +39,7 @@ int main(int argc, char **argv, char **env)
 		if (_strcmp("exit", *commands) == 0)
 			built_exit(line, commands, &exit_st);
 		else if (_strcmp("env", *commands) == 0)
-			built_env(commands, env);
+			built_env(commands, env, &exit_st);
 		else
 			execute_line(argv, commands, count, env, &exit_st, line);
 		fflush(stdin);

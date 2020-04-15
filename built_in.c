@@ -67,15 +67,18 @@ void built_exit(char *line, char **commands, int *exit_st)
 *built_env - function that implement the env builtin
 *@commands: the split arguments
 *@env: the environment
+*@exit_st: the exit status
 */
-void built_env(char **commands, char **env)
+void built_env(char **commands, char **env, int *exit_st)
 {
 	char **aux = env;
 
 	while (*aux != NULL)
 	{
-		printf("%s\n", *aux);
+		write(1, *aux, _strlen(*aux));
+		write(1, "\n", 1);
 		aux++;
 	}
+	*exit_st = 0;
 	free_loop(commands);
 }

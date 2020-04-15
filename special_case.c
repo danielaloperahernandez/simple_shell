@@ -10,13 +10,13 @@
 */
 int special_case(char *line, ssize_t line_len, int *exit_st)
 {
-	if (line_len == -1 && isatty(fileno(stdin)))
+	if (line_len == -1 && isatty(STDIN_FILENO) == 1)
 	{
 		write(1, "\n", 1);
 		free(line);
 		exit(*exit_st);
 	}
-	if (line_len == -1 && !isatty(fileno(stdin)))
+	if (line_len == -1 && isatty(STDIN_FILENO) == 0)
 	{
 		free(line);
 		exit(*exit_st);
