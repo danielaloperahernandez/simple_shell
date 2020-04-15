@@ -26,10 +26,7 @@ void execute_line(char **argv, char **commands, int count,
 		if (full_path)
 		{
 			if (access(full_path, X_OK) == 0)
-			{
 				execve(full_path, commands, env);
-			}
-			free(full_path);
 		}
 		_error(argv, commands[0], count, &exit_st);
 		free_loop(commands);
