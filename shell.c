@@ -21,7 +21,7 @@ int main(int argc, char **argv, char **env)
 	char **commands;
 	size_t bufsize = 0;
 	ssize_t line_len = 0, count = 0;
-	int exit_st;
+	int exit_st = 0;
 	(void)argc;
 
 	while (1)
