@@ -1,5 +1,5 @@
 #include "shell.h"
-#include  <ctype.h>
+#include <ctype.h>
 #include <string.h>
 /**
 *num_is_positive - function that verify if a string is a positive number
@@ -13,8 +13,10 @@ int num_is_positive(char *com)
 	if (com[0] == '-')
 		return (-1);
 	for (i = 0; com[i]; i++)
-	if (com[i] <= '0' && com[i] >= '9')
-		return (-1);
+	{
+		if (com[i] < 48 || com[i] > 57)
+			return (-1);
+	}
 	return (0);
 }
 /**
@@ -44,12 +46,12 @@ int _atoi(char *com)
 *@line: the buffer
 *@commands: the split arguments
 *@exit_st: the exit status
+*@count: count of lines
 */
-void built_exit(char *line, char **commands, int *exit_st)
+void built_exit(char *line, char **commands, int *exit_st, int count)
 {
 	int num = 0;
 
-	free(line);
 	if (commands[1])
 	{
 		if (num_is_positive(commands[1]) == 0)
@@ -58,9 +60,20 @@ void built_exit(char *line, char **commands, int *exit_st)
 			*exit_st = num;
 		}
 		else
-			write(1, "Ilegal number\n", 14);
+		{
+			write(1, "./hsh: ", 7);
+			print_num(count);
+			write(1, ": ", 2);
+			write(1, "exit: Illegal number: ", 22);
+			write(1, commands[1], _strlen(commands[1]));
+			write(1, "\n", 1);
+			*exit_st = 2;
+			free_loop(commands);
+			return;
+		}
 	}
 	free_loop(commands);
+	free(line);
 	exit(*exit_st);
 }
 /**

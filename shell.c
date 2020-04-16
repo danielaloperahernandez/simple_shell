@@ -35,7 +35,7 @@ int main(int argc, char **argv, char **env)
 			continue;
 		commands = split_line(line);
 		if (_strcmp("exit", *commands) == 0)
-			built_exit(line, commands, &exit_st);
+			built_exit(line, commands, &exit_st, count);
 		else if (_strcmp("env", *commands) == 0)
 			built_env(commands, env, &exit_st);
 		else
