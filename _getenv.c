@@ -11,6 +11,9 @@ char *_getenv(const char *name, char **env)
 	char *comp = NULL;
 	int i;
 
+	if (env == NULL)
+		return (NULL);
+
 	for (i = 0; env[i]; i++)
 	{
 		comp = strtok(env[i], "=");
