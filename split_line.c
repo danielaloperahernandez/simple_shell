@@ -10,6 +10,7 @@ char **split_line(char *line)
 {
 	int j = 0;
 	char *token;
+	char *token_hash;
 	char **word_arr;
 	int len;
 
@@ -18,7 +19,8 @@ char **split_line(char *line)
 	word_arr = malloc(sizeof(char *) * (len + 1));
 	if (word_arr == NULL)
 		return (NULL);
-	token = strtok(line, TOK_DELIM);
+	token_hash = strtok(line, "#");
+	token = strtok(token_hash, TOK_DELIM);
 	while (token != NULL)
 	{
 		word_arr[j] = malloc(_strlen(token) + 1);
